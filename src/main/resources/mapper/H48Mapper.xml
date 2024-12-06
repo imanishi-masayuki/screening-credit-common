@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.co.paypaycard.screening.creditcommon.mapper.H48Mapper">
+    <!-- 申し込み番号、区分に一致するレコード取得 -->
+    <select id="findDocbell" resultType="jp.co.paypaycard.screening.creditcommon.entity.db.H48Entity">
+        SELECT
+            *
+        FROM
+            ppc.H48
+        <trim prefix="WHERE" prefixOverrides="AND ">
+            <if test="moshikomiNo != null and moshikomiNo != ''">
+                AND H48_MOSHIKOMI_NO = #{moshikomiNo}
+            </if>
+            <if test="kbn != null and kbn != ''">
+                AND H48_KBN = #{kbn}
+            </if>
+        </trim>
+    </select>
+</mapper>

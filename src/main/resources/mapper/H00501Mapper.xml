@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.co.paypaycard.screening.creditcommon.mapper.H00501Mapper">
+
+    <!-- 保管整理番号に一致するレコード取得 -->
+    <select id="findByReceptionNumber" resultType="jp.co.paypaycard.screening.creditcommon.entity.db.H00501Entity">
+        SELECT
+            *
+        FROM
+            ppc.H00501
+        <trim prefix="WHERE" prefixOverrides="AND ">
+            <if test="receptionNumber != null and receptionNumber != ''">
+                AND H48_MOSHIKOMI_NO = #{receptionNumber}
+            </if>
+            <if test="kbn != null and kbn != ''">
+                AND H48_KBN = #{kbn}
+            </if>
+        </trim>
+    </select>
+
+    <!-- レコード一括追加 -->
+    <insert id="createAll" parameterType="jp.co.paypaycard.screening.creditcommon.entity.db.H00501Entity">
+        INSERT INTO ppc.H00501 (
+            H48_MOSHIKOMI_NO, H48_KBN, H48_SRC_DATE, H48_STATUS, H48_TEL_NEW, H48_RIREKI,
+            H48_SRC_DATE1, H48_STATUS1, H48_TEL_NEW1, H48_SRC_DATE2, H48_STATUS2, H48_TEL_NEW2,
+            H48_SRC_DATE3, H48_STATUS3, H48_TEL_NEW3, H48_SRC_DATE4, H48_STATUS4, H48_TEL_NEW4,
+            H48_SRC_DATE5, H48_STATUS5, H48_TEL_NEW5, H48_SRC_DATE6, H48_STATUS6, H48_TEL_NEW6,
+            H48_SRC_DATE7, H48_STATUS7, H48_TEL_NEW7, H48_SRC_DATE8, H48_STATUS8, H48_TEL_NEW8,
+            H48_SRC_DATE9, H48_STATUS9, H48_TEL_NEW9, H48_SRC_DATE10, H48_STATUS10, H48_TEL_NEW10,
+            H48_SRC_DATE11, H48_STATUS11, H48_TEL_NEW11, H48_SRC_DATE12, H48_STATUS12, H48_TEL_NEW12,
+            H48_SRC_DATE13, H48_STATUS13, H48_TEL_NEW13, H48_SRC_DATE14, H48_STATUS14, H48_TEL_NEW14,
+            H48_SRC_DATE15, H48_STATUS15, H48_TEL_NEW15, H48_SRC_DATE16, H48_STATUS16, H48_TEL_NEW16,
+            H48_SRC_DATE17, H48_STATUS17, H48_TEL_NEW17, H48_SRC_DATE18, H48_STATUS18, H48_TEL_NEW18,
+            H48_SRC_DATE19, H48_STATUS19, H48_TEL_NEW19, H48_SRC_DATE20, H48_STATUS20, H48_TEL_NEW20,
+            H48_CONV_SRC_DATE1, H48_CONV_STATUS1, H48_CONV_TEL_NEW1, H48_CONV_SRC_DATE2, H48_CONV_STATUS2, H48_CONV_TEL_NEW2,
+            H48_CONV_SRC_DATE3, H48_CONV_STATUS3, H48_CONV_TEL_NEW3, H48_CONV_SRC_DATE4, H48_CONV_STATUS4, H48_CONV_TEL_NEW4,
+            H48_CONV_SRC_DATE5, H48_CONV_STATUS5, H48_CONV_TEL_NEW5, H48_CONV_SRC_DATE6, H48_CONV_STATUS6, H48_CONV_TEL_NEW6,
+            H48_CONV_SRC_DATE7, H48_CONV_STATUS7, H48_CONV_TEL_NEW7, H48_CONV_SRC_DATE8, H48_CONV_STATUS8, H48_CONV_TEL_NEW8,
+            H48_CONV_SRC_DATE9, H48_CONV_STATUS9, H48_CONV_TEL_NEW9, H48_CONV_SRC_DATE10, H48_CONV_STATUS10, H48_CONV_TEL_NEW10,
+            H48_CONV_SRC_DATE11, H48_CONV_STATUS11, H48_CONV_TEL_NEW11, H48_CONV_SRC_DATE12, H48_CONV_STATUS12, H48_CONV_TEL_NEW12
+        )
+        VALUES
+        <foreach collection="list" item="entity" separator=",">
+        (
+            #{entity.H48_MOSHIKOMI_NO}, #{entity.H48_KBN}, #{entity.H48_SRC_DATE}, #{entity.H48_STATUS}, #{entity.H48_TEL_NEW}, #{entity.H48_RIREKI},
+            #{entity.H48_SRC_DATE1}, #{entity.H48_STATUS1}, #{entity.H48_TEL_NEW1}, #{entity.H48_SRC_DATE2}, #{entity.H48_STATUS2}, #{entity.H48_TEL_NEW2},
+            #{entity.H48_SRC_DATE3}, #{entity.H48_STATUS3}, #{entity.H48_TEL_NEW3}, #{entity.H48_SRC_DATE4}, #{entity.H48_STATUS4}, #{entity.H48_TEL_NEW4},
+            #{entity.H48_SRC_DATE5}, #{entity.H48_STATUS5}, #{entity.H48_TEL_NEW5}, #{entity.H48_SRC_DATE6}, #{entity.H48_STATUS6}, #{entity.H48_TEL_NEW6},
+            #{entity.H48_SRC_DATE7}, #{entity.H48_STATUS7}, #{entity.H48_TEL_NEW7}, #{entity.H48_SRC_DATE8}, #{entity.H48_STATUS8}, #{entity.H48_TEL_NEW8},
+            #{entity.H48_SRC_DATE9}, #{entity.H48_STATUS9}, #{entity.H48_TEL_NEW9}, #{entity.H48_SRC_DATE10}, #{entity.H48_STATUS10}, #{entity.H48_TEL_NEW10},
+            #{entity.H48_SRC_DATE11}, #{entity.H48_STATUS11}, #{entity.H48_TEL_NEW11}, #{entity.H48_SRC_DATE12}, #{entity.H48_STATUS12}, #{entity.H48_TEL_NEW12},
+            #{entity.H48_SRC_DATE13}, #{entity.H48_STATUS13}, #{entity.H48_TEL_NEW13}, #{entity.H48_SRC_DATE14}, #{entity.H48_STATUS14}, #{entity.H48_TEL_NEW14},
+            #{entity.H48_SRC_DATE15}, #{entity.H48_STATUS15}, #{entity.H48_TEL_NEW15}, #{entity.H48_SRC_DATE16}, #{entity.H48_STATUS16}, #{entity.H48_TEL_NEW16},
+            #{entity.H48_SRC_DATE17}, #{entity.H48_STATUS17}, #{entity.H48_TEL_NEW17}, #{entity.H48_SRC_DATE18}, #{entity.H48_STATUS18}, #{entity.H48_TEL_NEW18},
+            #{entity.H48_SRC_DATE19}, #{entity.H48_STATUS19}, #{entity.H48_TEL_NEW19}, #{entity.H48_SRC_DATE20}, #{entity.H48_STATUS20}, #{entity.H48_TEL_NEW20},
+            #{entity.H48_CONV_SRC_DATE1}, #{entity.H48_CONV_STATUS1}, #{entity.H48_CONV_TEL_NEW1}, #{entity.H48_CONV_SRC_DATE2}, #{entity.H48_CONV_STATUS2}, #{entity.H48_CONV_TEL_NEW2},
+            #{entity.H48_CONV_SRC_DATE3}, #{entity.H48_CONV_STATUS3}, #{entity.H48_CONV_TEL_NEW3}, #{entity.H48_CONV_SRC_DATE4}, #{entity.H48_CONV_STATUS4}, #{entity.H48_CONV_TEL_NEW4},
+            #{entity.H48_CONV_SRC_DATE5}, #{entity.H48_CONV_STATUS5}, #{entity.H48_CONV_TEL_NEW5}, #{entity.H48_CONV_SRC_DATE6}, #{entity.H48_CONV_STATUS6}, #{entity.H48_CONV_TEL_NEW6},
+            #{entity.H48_CONV_SRC_DATE7}, #{entity.H48_CONV_STATUS7}, #{entity.H48_CONV_TEL_NEW7}, #{entity.H48_CONV_SRC_DATE8}, #{entity.H48_CONV_STATUS8}, #{entity.H48_CONV_TEL_NEW8},
+            #{entity.H48_CONV_SRC_DATE9}, #{entity.H48_CONV_STATUS9}, #{entity.H48_CONV_TEL_NEW9}, #{entity.H48_CONV_SRC_DATE10}, #{entity.H48_CONV_STATUS10}, #{entity.H48_CONV_TEL_NEW10},
+            #{entity.H48_CONV_SRC_DATE11}, #{entity.H48_CONV_STATUS11}, #{entity.H48_CONV_TEL_NEW11}, #{entity.H48_CONV_SRC_DATE12}, #{entity.H48_CONV_STATUS12}, #{entity.H48_CONV_TEL_NEW12}
+        )
+        </foreach>
+    </insert>
+
+    <!-- 保管整理番号と一致するレコードを削除 -->
+    <delete id="deleteByReceptionNumber">
+        DELETE FROM ppc.H00501 WHERE H48_MOSHIKOMI_NO = #{receptionNumber}
+    </delete>
+
+</mapper>
